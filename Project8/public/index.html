@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spoof Detection</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Spoof Detection</h1>
+
+  <!-- 圖片上傳和錄音並排容器 -->
+  <div id="mediaContainer">
+    <!-- 圖片上傳容器 -->
+    <div id="imageUploadContainer" class="container1">
+      <h2>Upload Image</h2>
+      <form id="uploadForm">
+        <label for="fileInput">Select an image file:</label>
+        <input type="file" id="fileInput" name="fileInput" accept=".txt,audio/*,.jpg,.jpeg,.png,.giff" required>
+        <button type="submit">Upload File</button>
+      </form>
+    </div>
+
+    <!-- 錄音容器 -->
+    <div id="audioRecordContainer" class="container1">
+      <h2>Record Voice</h2>
+      <button id="recordButton">Start Recording</button>
+      <button id="stopButton" disabled>Stop Recording</button>
+      <div id="recordingIndicator">● Recording...<span id="recordingTime">0:00</span></div>
+      <audio id="audioPlayback" controls></audio>
+      <a id="downloadLink" download="audio.wav" style="display: none;">Download</a>
+      <button id="uploadRecordedAudio" style="display: none;">Upload Recorded Audio</button>
+    </div>
+  </div>
+
+  <!-- 結果容器 -->
+  <div id="resultContainer" class="container2">
+    <h2>Result</h2>
+    <pre id="result"></pre>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
