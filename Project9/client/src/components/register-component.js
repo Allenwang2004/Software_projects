@@ -70,12 +70,12 @@ const RegisterComponent = () => {
         </div>
         <br />
         <div className="form-group">
-          <label htmlFor="password">身份：</label>
+          <label htmlFor="password">部門：</label>
           <input
             onChange={handleRole}
             type="text"
             className="form-control"
-            placeholder="只能填入student或是instructor這兩個選項其一"
+            placeholder="請輸入部門名稱"
             name="role"
           />
         </div>

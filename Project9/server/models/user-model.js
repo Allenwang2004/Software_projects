@@ -21,7 +21,7 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ["student", "instructor"],
+    enum: ["Front_end", "Back_end", "AI"],
     required: true,
   },
   date: {
@@ -30,13 +30,16 @@ const userSchema = new Schema({
   },
 });
 
-// instance methods
-userSchema.methods.isStudent = function () {
-  return this.role == "student";
+userSchema.methods.isFront_end = function () {
+  return this.role == "Front_end";
 };
 
-userSchema.methods.isIsntructor = function () {
-  return this.role == "instructor";
+userSchema.methods.isBack_end = function () {
+  return this.role == "Back_end";
+};
+
+userSchema.methods.isAI = function () {
+  return this.role == "AI";
 };
 
 userSchema.methods.comparePassword = async function (password, cb) {
@@ -49,10 +52,7 @@ userSchema.methods.comparePassword = async function (password, cb) {
   }
 };
 
-// mongoose middlewares
-// 若使用者為新用戶，或者是正在更改密碼，則將密碼進行雜湊處理
 userSchema.pre("save", async function (next) {
-  // this 代表 mongoDB 內的 document
   if (this.isNew || this.isModified("password")) {
     const hashValue = await bcrypt.hash(this.password, 10);
     this.password = hashValue;

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const authRoute = require("./routes").auth;
-const courseRoute = require("./routes").course;
+const orderRoute = require("./routes").order;
 const passport = require("passport");
 require("./config/passport")(passport);
 const cors = require("cors");
@@ -25,13 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/api/user", authRoute);
-// course route應該被jwt保護
-// 如果request header內部沒有jwt，則request就會被視為是unauthorized
-app.use(
-  "/api/courses",
-  passport.authenticate("jwt", { session: false }),
-  courseRoute
-);
+app.use("/api/orders");
 
 app.listen(8080, () => {
   console.log("後端伺服器聆聽在port 8080...");
