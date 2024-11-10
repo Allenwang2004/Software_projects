@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/api/user", authRoute);
-app.use("/api/orders");
+app.use("/api/orders", orderRoute);
 
 app.listen(8080, () => {
   console.log("後端伺服器聆聽在port 8080...");

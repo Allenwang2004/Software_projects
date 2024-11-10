@@ -65,7 +65,7 @@ const NavComponent = ({ currentUser, setCurrentUser }) => {
                 {currentUser && (
                   <li className="nav-item">
                     <Link className="nav-link" to="/course">
-                      課程頁面
+                      訂單頁面
                     </Link>
                   </li>
                 )}
